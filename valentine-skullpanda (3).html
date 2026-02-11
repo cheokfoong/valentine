@@ -690,6 +690,16 @@
                     <div class="panda-name" id="pandaName"></div>
                     <div class="rarity" id="rarityBadge"></div>
                 </div>
+
+                <div id="collectionSection" style="margin-top:40px;">
+                    <h2 style="font-family: 'Righteous', cursive; color:#FF6B9D;">
+                        🐼 Your Collection
+                    </h2>
+                    <div id="collectionGrid" 
+                         style="display:grid; grid-template-columns:repeat(auto-fill,minmax(60px,1fr)); gap:10px; margin-top:15px;">
+                    </div>
+                    <div id="collectionCount" style="margin-top:10px; font-weight:700;"></div>
+                </div>
             </div>
 
             <button class="button" id="actionButton" onclick="openBox()">
@@ -727,6 +737,34 @@
             // Secret (1% chance)
             { name: "The Equilibrium", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448610515_850589343781680_6144897315093085689_n.jpg", rarity: "secret", weight: 1 }
         ];
+
+        let collection = JSON.parse(localStorage.getItem("pandaCollection")) || [];
+
+        function saveCollection() {
+            localStorage.setItem("pandaCollection", JSON.stringify(collection));
+        }
+
+        function updateGallery() {
+            const grid = document.getElementById("collectionGrid");
+            const count = document.getElementById("collectionCount");
+
+            grid.innerHTML = "";
+
+            collection.forEach(name => {
+                const panda = skullPandas.find(p => p.name === name);
+
+                const img = document.createElement("img");
+                img.src = panda.image;
+                img.style.width = "60px";
+                img.style.borderRadius = "10px";
+                img.style.boxShadow = "0 4px 10px rgba(0,0,0,0.2)";
+                img.title = panda.name;
+
+                grid.appendChild(img);
+            });
+
+            count.textContent = `Collected ${collection.length} / ${skullPandas.length}`;
+        }
 
         let hasOpened = false;
         let isPlaying = false;
@@ -839,6 +877,15 @@
                     // Get random panda
                     const panda = weightedRandom(skullPandas);
                     
+                    // skull panda Collection
+                    let isNew = false;
+
+                    if (!collection.includes(panda.name)) {
+                        collection.push(panda.name);
+                        saveCollection();
+                        isNew = true;
+                    }
+                    
                     // Display result
                     document.getElementById('pandaImage').src = panda.image;
                     document.getElementById('pandaName').textContent = panda.name;
@@ -847,6 +894,20 @@
                     rarityBadge.className = 'rarity ' + panda.rarity;
                     
                     document.getElementById('result').classList.remove('hidden');
+
+                    // Add to collection if new
+                    if (isNew) {
+                        alert("✨ NEW SKULL PANDA UNLOCKED! ✨");
+                    }
+
+                    updateGallery();
+
+                    if (collection.length === skullPandas.length) {
+                        setTimeout(() => {
+                            alert("🎉 YOU COMPLETED THE FULL COLLECTION! 🎉");
+                            createConfetti();
+                        }, 500);
+                    }
                     
                     // Update button
                     button.innerHTML = '<span>Try Again! 💝</span>';
@@ -860,6 +921,8 @@
                     hasOpened = true;
                 }, 600);
             }, 500);
+
+            updateGallery();
         }
     </script>
 </body>
