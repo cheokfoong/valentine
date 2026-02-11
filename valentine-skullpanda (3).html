@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day 💀🐼💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink-light: #FFE5EC;
+            --pink-main: #FFB3C6;
+            --pink-deep: #FF8FAB;
+            --pink-dark: #FF6B9D;
+            --purple-light: #E5DEFF;
+            --purple-main: #C7B8EA;
+            --black: #2D2424;
+            --white: #FFF5F7;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, var(--pink-light) 0%, var(--purple-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Floating hearts background */
+        .heart-bg {
+            position: fixed;
+            font-size: 20px;
+            opacity: 0.15;
+            animation: float 15s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .skull-bg {
+            position: fixed;
+            font-size: 24px;
+            opacity: 0.1;
+            animation: float 18s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star-bg {
+            position: fixed;
+            font-size: 18px;
+            opacity: 0.2;
+            animation: twinkle 3s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .decoration-bg {
+            position: fixed;
+            font-size: 20px;
+            opacity: 0.18;
+            animation: float 20s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(5deg); }
+            50% { transform: translateY(-15px) rotate(-5deg); }
+            75% { transform: translateY(-40px) rotate(3deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 
+                0 20px 60px rgba(255, 107, 157, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: cardEntry 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes cardEntry {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--pink-dark);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle 2s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .sparkle:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 20%; right: 20%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { bottom: 15%; left: 25%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { bottom: 25%; right: 15%; animation-delay: 1.5s; }
+
+        h1 {
+            font-family: 'Righteous', cursive;
+            font-size: 3em;
+            color: var(--pink-dark);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 var(--purple-light);
+            animation: titlePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+        }
+
+        @keyframes titlePop {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .message {
+            font-size: 1.3em;
+            color: var(--black);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 600;
+            animation: messageFade 0.8s ease-out 0.5s backwards;
+        }
+
+        @keyframes messageFade {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .box-container {
+            margin: 40px 0;
+            animation: boxSlide 0.8s ease-out 0.7s backwards;
+        }
+
+        @keyframes boxSlide {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .mystery-box {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, var(--pink-main) 0%, var(--purple-main) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+            box-shadow: 
+                0 10px 30px rgba(255, 107, 157, 0.4),
+                0 0 0 8px rgba(255, 255, 255, 0.3) inset;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .mystery-box:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 
+                0 15px 40px rgba(255, 107, 157, 0.5),
+                0 0 0 8px rgba(255, 255, 255, 0.5) inset;
+        }
+
+        .mystery-box.shaking {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px) rotate(-5deg); }
+            20%, 40%, 60%, 80% { transform: translateX(10px) rotate(5deg); }
+        }
+
+        .mystery-box.opening {
+            animation: boxOpen 0.6s ease-out forwards;
+        }
+
+        @keyframes boxOpen {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
+
+        .result-panda {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            animation: pandaPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes pandaPop {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.2) rotate(10deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .panda-name {
+            font-family: 'Righteous', cursive;
+            font-size: 2em;
+            color: var(--pink-dark);
+            margin: 20px 0 10px;
+            animation: nameFade 0.5s ease-out 0.3s backwards;
+        }
+
+        @keyframes nameFade {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .rarity {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            animation: raritySlide 0.5s ease-out 0.4s backwards;
+        }
+
+        @keyframes raritySlide {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .rarity.common {
+            background: linear-gradient(135deg, #DDD, #AAA);
+            color: white;
+        }
+
+        .rarity.rare {
+            background: linear-gradient(135deg, #6DD5FA, #2980B9);
+            color: white;
+        }
+
+        .rarity.super-rare {
+            background: linear-gradient(135deg, #A770EF, #FDB99B);
+            color: white;
+        }
+
+        .rarity.ultra-rare {
+            background: linear-gradient(135deg, #FFD700, #FF6B9D);
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .rarity.secret {
+            background: linear-gradient(135deg, #000, #434343);
+            color: #FFD700;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+            animation: secretGlow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes secretGlow {
+            0%, 100% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7); }
+            50% { box-shadow: 0 0 40px rgba(255, 215, 0, 1); }
+        }
+
+        .button {
+            background: linear-gradient(135deg, var(--pink-dark) 0%, var(--pink-deep) 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-family: 'Nunito', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            animation: buttonEntry 0.6s ease-out 0.9s backwards;
+        }
+
+        @keyframes buttonEntry {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 107, 157, 0.6);
+        }
+
+        .button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 1.4em;
+            color: var(--pink-dark);
+            font-weight: 700;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(0.95); }
+        }
+
+        .music-button {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-dark), var(--purple-main));
+            border: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .music-button:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 30px rgba(255, 107, 157, 0.6);
+        }
+
+        .music-button.playing {
+            animation: spin 3s linear infinite, pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4); }
+            50% { box-shadow: 0 5px 30px rgba(255, 107, 157, 0.7); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .easter-egg {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            font-size: 18px;
+            opacity: 0.3;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            animation: subtleGlow 3s ease-in-out infinite;
+        }
+
+        .easter-egg:hover {
+            opacity: 1;
+            transform: scale(1.3) rotate(15deg);
+        }
+
+        @keyframes subtleGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+
+        .secret-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .secret-content {
+            background: linear-gradient(135deg, var(--pink-light), var(--purple-light));
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: modalPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        @keyframes modalPop {
+            0% {
+                transform: scale(0.5) rotate(-10deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .secret-title {
+            font-family: 'Righteous', cursive;
+            font-size: 2.5em;
+            color: var(--pink-dark);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 var(--purple-light);
+        }
+
+        .secret-message {
+            font-size: 1.3em;
+            color: var(--black);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .secret-panda {
+            width: 250px;
+            height: auto;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: secretPandaSpin 1s ease-out;
+        }
+
+        @keyframes secretPandaSpin {
+            0% {
+                transform: scale(0) rotate(-360deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .close-secret {
+            background: linear-gradient(135deg, var(--pink-dark), var(--pink-deep));
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Nunito', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .close-secret:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.5);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--pink-dark);
+            position: absolute;
+            animation: confettiFall 3s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Music Button -->
+    <button class="music-button" id="musicButton" onclick="toggleMusic()">🎵</button>
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Hidden Easter Egg -->
+    <div class="easter-egg" onclick="revealSecret()">🎁</div>
+
+    <!-- Floating hearts background -->
+    <div class="heart-bg" style="top: 10%; left: 10%; animation-delay: 0s; font-size: 25px;">💕</div>
+    <div class="heart-bg" style="top: 20%; right: 15%; animation-delay: 2s; font-size: 30px;">💖</div>
+    <div class="heart-bg" style="bottom: 15%; left: 20%; animation-delay: 4s; font-size: 22px;">💗</div>
+    <div class="heart-bg" style="top: 60%; right: 10%; animation-delay: 1s; font-size: 28px;">💝</div>
+    <div class="heart-bg" style="top: 40%; left: 5%; animation-delay: 3s; font-size: 24px;">💕</div>
+    <div class="heart-bg" style="bottom: 25%; right: 25%; animation-delay: 5s; font-size: 26px;">💖</div>
+    
+    <!-- Additional decorative elements -->
+    <div class="heart-bg" style="top: 5%; right: 30%; animation-delay: 3.5s; font-size: 20px;">💗</div>
+    <div class="heart-bg" style="bottom: 10%; left: 35%; animation-delay: 2.5s; font-size: 32px;">💕</div>
+    <div class="heart-bg" style="top: 70%; left: 15%; animation-delay: 4.5s; font-size: 23px;">💝</div>
+    <div class="heart-bg" style="top: 35%; right: 5%; animation-delay: 1.5s; font-size: 27px;">💖</div>
+    <div class="heart-bg" style="top: 55%; left: 28%; animation-delay: 3.8s; font-size: 21px;">💗</div>
+    <div class="heart-bg" style="bottom: 40%; right: 18%; animation-delay: 2.2s; font-size: 29px;">💕</div>
+    <div class="heart-bg" style="top: 12%; left: 40%; animation-delay: 4.8s; font-size: 26px;">💖</div>
+    <div class="heart-bg" style="bottom: 50%; right: 35%; animation-delay: 1.8s; font-size: 24px;">💝</div>
+    
+    <!-- Skull decorations -->
+    <div class="skull-bg" style="top: 15%; right: 8%; animation-delay: 1s;">💀</div>
+    <div class="skull-bg" style="bottom: 20%; right: 12%; animation-delay: 3s;">💀</div>
+    <div class="skull-bg" style="top: 50%; left: 8%; animation-delay: 2s;">💀</div>
+    <div class="skull-bg" style="bottom: 35%; left: 10%; animation-delay: 4s;">💀</div>
+    <div class="skull-bg" style="top: 30%; right: 22%; animation-delay: 2.5s;">💀</div>
+    <div class="skull-bg" style="bottom: 55%; left: 25%; animation-delay: 3.5s;">💀</div>
+    <div class="skull-bg" style="top: 65%; right: 28%; animation-delay: 1.5s;">💀</div>
+    <div class="skull-bg" style="bottom: 8%; left: 45%; animation-delay: 4.5s;">💀</div>
+    
+    <!-- Stars -->
+    <div class="star-bg" style="top: 25%; left: 25%; animation-delay: 0.5s;">⭐</div>
+    <div class="star-bg" style="top: 80%; right: 20%; animation-delay: 2.5s;">✨</div>
+    <div class="star-bg" style="top: 45%; right: 30%; animation-delay: 1.5s;">⭐</div>
+    <div class="star-bg" style="bottom: 40%; left: 30%; animation-delay: 3.5s;">✨</div>
+    <div class="star-bg" style="top: 8%; left: 50%; animation-delay: 4.2s;">⭐</div>
+    <div class="star-bg" style="bottom: 12%; right: 40%; animation-delay: 1.2s;">✨</div>
+    <div class="star-bg" style="top: 38%; left: 18%; animation-delay: 3.2s;">⭐</div>
+    <div class="star-bg" style="bottom: 28%; right: 8%; animation-delay: 2.8s;">✨</div>
+    <div class="star-bg" style="top: 72%; left: 42%; animation-delay: 0.8s;">⭐</div>
+    <div class="star-bg" style="bottom: 62%; right: 15%; animation-delay: 4.8s;">✨</div>
+    
+    <!-- More variety - flowers, ribbons, gifts -->
+    <div class="decoration-bg" style="top: 18%; left: 32%; animation-delay: 2.3s; font-size: 22px;">🌸</div>
+    <div class="decoration-bg" style="bottom: 22%; right: 33%; animation-delay: 3.7s; font-size: 24px;">🌹</div>
+    <div class="decoration-bg" style="top: 52%; right: 42%; animation-delay: 1.9s; font-size: 20px;">🎀</div>
+    <div class="decoration-bg" style="bottom: 45%; left: 38%; animation-delay: 4.1s; font-size: 23px;">🌺</div>
+    <div class="decoration-bg" style="top: 28%; left: 48%; animation-delay: 2.9s; font-size: 21px;">💐</div>
+    <div class="decoration-bg" style="bottom: 32%; right: 45%; animation-delay: 3.3s; font-size: 25px;">🎁</div>
+    <div class="decoration-bg" style="top: 62%; left: 12%; animation-delay: 1.7s; font-size: 22px;">🌸</div>
+    <div class="decoration-bg" style="bottom: 18%; left: 52%; animation-delay: 4.4s; font-size: 20px;">🌹</div>
+    <div class="decoration-bg" style="top: 42%; right: 12%; animation-delay: 2.6s; font-size: 24px;">🎀</div>
+    <div class="decoration-bg" style="bottom: 52%; right: 50%; animation-delay: 3.9s; font-size: 21px;">💐</div>
+    
+    <!-- Cute extra touches -->
+    <div class="decoration-bg" style="top: 22%; right: 38%; animation-delay: 1.3s; font-size: 19px;">🦋</div>
+    <div class="decoration-bg" style="bottom: 38%; left: 22%; animation-delay: 3.1s; font-size: 20px;">🦋</div>
+    <div class="decoration-bg" style="top: 48%; left: 55%; animation-delay: 2.4s; font-size: 22px;">🎈</div>
+    <div class="decoration-bg" style="bottom: 48%; right: 22%; animation-delay: 4.6s; font-size: 23px;">🎈</div>
+    <div class="decoration-bg" style="top: 32%; right: 48%; animation-delay: 1.6s; font-size: 20px;">💫</div>
+    <div class="decoration-bg" style="bottom: 58%; left: 48%; animation-delay: 3.4s; font-size: 21px;">💫</div>
+
+    <div class="container">
+        <div class="card">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+
+            <h1>Happy Valentine's Day! 💀🐼💕</h1>
+            
+            <div class="message">
+                You're absolutely pandamazing! Here's a special Skull Panda just for you! ✨
+            </div>
+
+            <div class="box-container">
+                <div class="mystery-box" id="mysteryBox" onclick="openBox()">
+                    🎁
+                </div>
+                
+                <div id="result" class="hidden">
+                    <img class="result-panda" id="pandaImage" alt="Skull Panda">
+                    <div class="panda-name" id="pandaName"></div>
+                    <div class="rarity" id="rarityBadge"></div>
+                </div>
+            </div>
+
+            <button class="button" id="actionButton" onclick="openBox()">
+                <span>Open Your Gift! 🎁</span>
+            </button>
+
+            <div class="footer">
+                Made with 💕 for someone special
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const skullPandas = [
+            // Common (50% chance)
+            { name: "The Grief", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448533378_850589520448329_4110944581462368306_n.jpg", rarity: "common", weight: 10 },
+            { name: "The Trust", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448629090_850589503781664_8904449204598505068_n.jpg", rarity: "common", weight: 10 },
+            { name: "The Awe", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448674162_850589363781678_5843374621655814935_n.jpg", rarity: "common", weight: 10 },
+            { name: "The Admiration", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448557304_850589370448344_1350120681773969542_n.jpg", rarity: "common", weight: 10 },
+            { name: "The Vigilance", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448657162_850589380448343_19749064148564497_n.jpg", rarity: "common", weight: 10 },
+            
+            // Rare (30% chance)
+            { name: "The Disgust", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448535476_850589537114994_4969441836198822744_n.jpg", rarity: "rare", weight: 10 },
+            { name: "The Serenity", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448472774_850589323781682_5466663438031380814_n.jpg", rarity: "rare", weight: 10 },
+            { name: "The Terror", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448558937_850589283781686_7577445070075171439_n.jpg", rarity: "rare", weight: 10 },
+            
+            // Super Rare (15% chance)
+            { name: "The Pensiveness", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448656703_850589263781688_7889156740534809162_n.jpg", rarity: "super-rare", weight: 8 },
+            { name: "The Ecstasy", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448772206_850589313781683_420734712351071419_n.jpg", rarity: "super-rare", weight: 7 },
+            
+            // Ultra Rare (4% chance)
+            { name: "The Joy", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448629650_850589340448347_6373948992848454661_n.jpg", rarity: "ultra-rare", weight: 2 },
+            { name: "The Anger", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448671782_850589297115018_1775763775457405344_n.jpg", rarity: "ultra-rare", weight: 2 },
+            
+            // Secret (1% chance)
+            { name: "The Equilibrium", image: "https://www.thetoychronicle.com/wp-content/uploads/2024/06/POP-MART-x-SKULLPANDA-The-Sound-Blind-Box-Series448610515_850589343781680_6144897315093085689_n.jpg", rarity: "secret", weight: 1 }
+        ];
+
+        let hasOpened = false;
+        let isPlaying = false;
+
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const button = document.getElementById('musicButton');
+            
+            if (isPlaying) {
+                music.pause();
+                button.textContent = '🎵';
+                button.classList.remove('playing');
+                isPlaying = false;
+            } else {
+                music.play().catch(function(error) {
+                    console.log("Audio play failed:", error);
+                    // Try alternative music source
+                    music.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZSR0OWKvi8K1aHAY+ldny0IAyBSV+zPLaizsIGGS57OihUBYLTKXh8bllHgU2jdXyz4E0Bh9txO/mnVQdDVOq5PKsWiAFPJPY88qCOAcddMPx6KFSHwxOpuLyrFshBS6Fz/PYhToHGmy/7+egURsNTqXh8bBdIAU7kdXz0oI2BiJ0xe/mnlYdDVGn4/KsWiAFOpHU89GBNgYhdcXv5Z5WHQ1Rp+PyqVofBTqR1PPQgjUGInXF7+WeVh0NUafi8qhaHwU6kdTz0II1BiJ1xe/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcXv5Z5WHQ1Rp+PyqFofBTqR1PPQgjUGInXF7+WeVh0NUafi8qhaHwU6kdTz0II1BiJ1xe/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcXv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUafi8qhaHwU6kdTz0YI1BiJ1xe/lnlYdDVGn4/KoWh8FOpHU89GCNQYidcXv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUafi8qhaHwU6kdTz0YI1BiJ1xe/lnlYdDVGn4/KoWh8FOpHU89GCNQYidcXv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUafi8qhaHwU6kdTz0YI1BiJ1xe/lnlYdDVGn4/KoWh8FOpHU89GCNQYidcXv5Z5WHQ1Rp+PyqFofBTqR1PPRgjUGInXF7+WeVh0NUafi8qlaHwU6kdTz0II1BiJ1xe/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcXv5Z5WHQ1Rp+PyqFofBTqR1PPQgjUGInXF7+WeVh0NUafi8qhaHwU6kdTz0II1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUafi8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUafi8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqFofBTqR1PPQgjUGInXE7+WeVh0NUafi8qhaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqFofBTqR1PPQgjUGInXE7+WeVh0NUafi8qhaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqFofBTqR1PPQgjUGInXE7+WeVh0NUafi8qhaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5p5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqFofBTqR1PPQgjUGInXE7+WeVh0NUafi8qhaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5p5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqFofBTqR1PPQgjUGInXE7+WeVh0NUafi8qhaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5p5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqFofBTqR1PPQgjUGInXE7+WeVh0NUafi8qhaHwU6kdTz0II1BiJ1xO/lnlYdDVGn4/KoWh8FOpHU89CCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5p5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+WeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBTqR1PPRgjUGInXE7+aeVh0NUabj8qlaHwU6kdTz0YI1BiJ1xO/mnlYdDVGm4/KpWh8FOpHU89GCNQYidcTv5Z5WHQ1Rp+PyqVofBQ=';
+                    music.play();
+                });
+                button.textContent = '🎶';
+                button.classList.add('playing');
+                isPlaying = true;
+            }
+        }
+
+        function revealSecret() {
+            const modal = document.createElement('div');
+            modal.className = 'secret-modal';
+            modal.innerHTML = `
+                <div class="secret-content">
+                    <div class="secret-title">🎉 You Found Me! 🎉</div>
+                    <div class="secret-message">
+                        Congratulations! You discovered the secret! 
+                        Here's an ULTRA RARE Valentine's gift just for you! 💕
+                    </div>
+                    <img class="secret-panda" src="https://www.thetoychronicle.com/wp-content/uploads/2024/02/POP-MART-x-Skullpanda-Presents-The-Glimpse.jpeg" alt="Secret Skull Panda">
+                    <div class="secret-message" style="font-size: 1.1em; margin-top: 20px;">
+                        ✨ Rainbow Secret Edition ✨<br>
+                        The rarest of them all!
+                    </div>
+                    <button class="close-secret" onclick="this.closest('.secret-modal').remove()">
+                        Amazing! 💖
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            createConfetti();
+        }
+
+        function weightedRandom(items) {
+            const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
+            let random = Math.random() * totalWeight;
+            
+            for (let item of items) {
+                random -= item.weight;
+                if (random <= 0) {
+                    return item;
+                }
+            }
+            return items[0];
+        }
+
+        function createConfetti() {
+            const colors = ['#FFB3C6', '#FF8FAB', '#FF6B9D', '#C7B8EA', '#FFD700'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                    confetti.style.height = confetti.style.width;
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+
+        function openBox() {
+            if (hasOpened) {
+                // Reset for another pull
+                document.getElementById('result').classList.add('hidden');
+                document.getElementById('mysteryBox').classList.remove('hidden');
+                document.getElementById('mysteryBox').innerHTML = '🎁';
+                document.getElementById('actionButton').innerHTML = '<span>Open Another! 🎁</span>';
+                hasOpened = false;
+                return;
+            }
+
+            const box = document.getElementById('mysteryBox');
+            const button = document.getElementById('actionButton');
+            
+            // Disable button during animation
+            button.style.pointerEvents = 'none';
+            
+            // Shake animation
+            box.classList.add('shaking');
+            
+            setTimeout(() => {
+                box.classList.remove('shaking');
+                box.classList.add('opening');
+                
+                setTimeout(() => {
+                    // Hide box, show result
+                    box.classList.add('hidden');
+                    
+                    // Get random panda
+                    const panda = weightedRandom(skullPandas);
+                    
+                    // Display result
+                    document.getElementById('pandaImage').src = panda.image;
+                    document.getElementById('pandaName').textContent = panda.name;
+                    const rarityBadge = document.getElementById('rarityBadge');
+                    rarityBadge.textContent = panda.rarity.replace('-', ' ');
+                    rarityBadge.className = 'rarity ' + panda.rarity;
+                    
+                    document.getElementById('result').classList.remove('hidden');
+                    
+                    // Update button
+                    button.innerHTML = '<span>Try Again! 💝</span>';
+                    button.style.pointerEvents = 'auto';
+                    
+                    // Confetti for rare pulls
+                    if (panda.rarity === 'ultra-rare' || panda.rarity === 'secret') {
+                        createConfetti();
+                    }
+                    
+                    hasOpened = true;
+                }, 600);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
